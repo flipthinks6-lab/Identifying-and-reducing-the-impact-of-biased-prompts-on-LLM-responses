@@ -4,16 +4,19 @@ Step 2: Preprocess dataset and check if it's usable. If it's usable proceed to s
 
 Step 3: Modify Dataset to make it usable or change the dataset completely.
 
-Step 4: Load Dataset and integrate API for testing
+Step 4: Load Dataset, split it into train-test subsets and integrate API for testing
 
 Step 5: Input prompts into LLMs
 
 Step 6: Record Responses
 
-Step 7: Analyze the responses using the 3 methods; Sentiment Analysis, BERT based Bias Score, Diversity Score
+Step 7: Analyze the responses and prompts using the 3 methods; Sentiment Analysis, BERT based Bias Score, Diversity Score. The function used to analyze these scores should be able to read both prompts and responses together. If responses are not present, only the prompts should be analyzed for bias. If responses are present, then both the prompts and responses should be analyzed along with the impact of the biased prompts on the responses as well. Only the main scores from each method should be stored in the train_df dataframe.
 
-Step 8: Categorize the responses into "Neutral" or "Biased". If responses are neutral, end task and proceed to step 10. If not proceed to step 9.
+Step 8: Categorize the rows containing the prompts, or both prompts and responses into "Neutral" or "Biased". If rows containing prompts and responses are neutral, end task and proceed to step 10. If not proceed to step 9.
 
-Step 9: Carry out Prompt Engineering steps (viz., Reinforcement via Chain of Thought, Role-Playing Prompting, Contextual Counterfactual Prompting, Explicit Bias-Reduction Prompting) and Adversarial Attacks (viz., FGSM Attack and PGD Attack) and store the reformatted prompts in a separate column for each LLMs that we have chosen. Then go back to step 5.
+Step 9: Carry out Prompt Engineering steps (viz., Reinforcement via Chain of Thought, Role-Playing Prompting, Contextual Counterfactual Prompting, Explicit Bias-Reduction Prompting) and Adversarial Attacks (viz., FGSM Attack and PGD Attack) and store the reformatted prompts in a separate column for each LLMs that we have chosen.
 
 Step 10: End task and exit.
+
+Step 11: Repeat steps 5 to 10 for the test dataset.
+
